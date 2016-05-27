@@ -70,6 +70,15 @@ namespace WeatherNetPersonal.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gaisa mitrums: .
+        /// </summary>
+        internal static string MainForm_InitializeWeatherInfo_Gaisa_mitrums_ {
+            get {
+                return ResourceManager.GetString("MainForm_InitializeWeatherInfo_Gaisa_mitrums_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vēja ātrums: .
         /// </summary>
         internal static string MainForm_InitializeWeatherInfo_Vēja_ātrums_ {

@@ -31,5 +31,11 @@ namespace WeatherNetPersonal
             return Convert.ToString(WeatherNet.Clients.CurrentWeather.GetByCityName(City, "Latvia", "English", "metric").Item.WindSpeed, 
                 CultureInfo.InvariantCulture);
         }
+
+        public string GetHumidity()
+        {
+            return Convert.ToString(WeatherNet.Clients.CurrentWeather.GetByCityName(City, "Latvia", "English", "metric").Item.Humidity + " %",
+                CultureInfo.InvariantCulture);
+        }
     }
 }

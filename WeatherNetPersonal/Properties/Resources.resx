@@ -120,4 +120,7 @@
   <data name="MainForm_InitializeWeatherInfo__m_s" xml:space="preserve">
     <value> m/s</value>
   </data>
+  <data name="MainForm_InitializeWeatherInfo_Gaisa_mitrums_" xml:space="preserve">
+    <value>Gaisa mitrums: </value>
+  </data>
 </root>

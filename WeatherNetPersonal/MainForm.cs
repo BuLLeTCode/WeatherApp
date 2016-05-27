@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using WeatherNet;
 using WeatherNetPersonal.Properties;
@@ -39,8 +40,12 @@ namespace WeatherNetPersonal
             tbExtraWeatherInfo.ReadOnly = true;
             tbExtraWeatherInfo.Text = Resources.MainForm_InitializeWeatherInfo_Vēja_ātrums_;
             tbExtraWeatherInfo.Text += valmieraCityWeather.GetWind() + Resources.MainForm_InitializeWeatherInfo__m_s;
-            //tbExtraWeatherInfo.Text += Environment.NewLine +  
-            
+            tbExtraWeatherInfo.Text += Environment.NewLine + Resources.MainForm_InitializeWeatherInfo_Gaisa_mitrums_ +
+                                       valmieraCityWeather.GetHumidity();
+            //TODO get information about sunrise and sunset.
+            //tbExtraWeatherInfo.Text += Environment.NewLine + valmieraCityWeather.GetHumidity();
+
+
         }
     }
 }
