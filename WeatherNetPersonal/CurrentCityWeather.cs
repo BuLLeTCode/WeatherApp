@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows.Forms.VisualStyles;
 
 namespace WeatherNetPersonal
 {
@@ -11,6 +10,16 @@ namespace WeatherNetPersonal
         public CurrentCityWeather(string city)
         {
             City = city;
+        }
+
+        public bool IsCityValide()
+        {
+            if (WeatherNet.Clients.CurrentWeather.GetByCityName(City, "Latvia", "English", "metric").Success)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public string GetTemp()

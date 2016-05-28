@@ -34,6 +34,8 @@
             this.pbWeatherIcone = new System.Windows.Forms.PictureBox();
             this.lblTemp = new System.Windows.Forms.Label();
             this.tbExtraWeatherInfo = new System.Windows.Forms.TextBox();
+            this.tbUserInputCity = new System.Windows.Forms.TextBox();
+            this.lblChooseCity = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbWeatherIcone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,17 +43,17 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(324, 9);
+            this.lblTitle.Location = new System.Drawing.Point(59, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(111, 25);
+            this.lblTitle.Size = new System.Drawing.Size(124, 25);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Laika ģids! ";
+            this.lblTitle.Text = "Temperatūra";
             // 
             // lblCityNameCountry
             // 
             this.lblCityNameCountry.AutoSize = true;
             this.lblCityNameCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCityNameCountry.Location = new System.Drawing.Point(119, 68);
+            this.lblCityNameCountry.Location = new System.Drawing.Point(119, 190);
             this.lblCityNameCountry.Name = "lblCityNameCountry";
             this.lblCityNameCountry.Size = new System.Drawing.Size(74, 20);
             this.lblCityNameCountry.TabIndex = 1;
@@ -59,7 +61,7 @@
             // 
             // pbWeatherIcone
             // 
-            this.pbWeatherIcone.Location = new System.Drawing.Point(123, 91);
+            this.pbWeatherIcone.Location = new System.Drawing.Point(123, 213);
             this.pbWeatherIcone.Name = "pbWeatherIcone";
             this.pbWeatherIcone.Size = new System.Drawing.Size(70, 50);
             this.pbWeatherIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,7 +72,7 @@
             // 
             this.lblTemp.AutoSize = true;
             this.lblTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemp.Location = new System.Drawing.Point(7, 105);
+            this.lblTemp.Location = new System.Drawing.Point(12, 227);
             this.lblTemp.Name = "lblTemp";
             this.lblTemp.Size = new System.Drawing.Size(61, 36);
             this.lblTemp.TabIndex = 3;
@@ -78,18 +80,37 @@
             // 
             // tbExtraWeatherInfo
             // 
-            this.tbExtraWeatherInfo.Location = new System.Drawing.Point(12, 168);
+            this.tbExtraWeatherInfo.Location = new System.Drawing.Point(28, 290);
             this.tbExtraWeatherInfo.Multiline = true;
             this.tbExtraWeatherInfo.Name = "tbExtraWeatherInfo";
             this.tbExtraWeatherInfo.Size = new System.Drawing.Size(181, 89);
             this.tbExtraWeatherInfo.TabIndex = 4;
+            // 
+            // tbUserInputCity
+            // 
+            this.tbUserInputCity.Location = new System.Drawing.Point(28, 100);
+            this.tbUserInputCity.Name = "tbUserInputCity";
+            this.tbUserInputCity.Size = new System.Drawing.Size(180, 22);
+            this.tbUserInputCity.TabIndex = 5;
+            this.tbUserInputCity.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbUserInputCity_KeyUp);
+            // 
+            // lblChooseCity
+            // 
+            this.lblChooseCity.AutoSize = true;
+            this.lblChooseCity.Location = new System.Drawing.Point(12, 68);
+            this.lblChooseCity.Name = "lblChooseCity";
+            this.lblChooseCity.Size = new System.Drawing.Size(214, 17);
+            this.lblChooseCity.TabIndex = 6;
+            this.lblChooseCity.Text = "Ieraksti meklētājā Latvijas pilsētu";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(764, 534);
+            this.ClientSize = new System.Drawing.Size(249, 404);
+            this.Controls.Add(this.lblChooseCity);
+            this.Controls.Add(this.tbUserInputCity);
             this.Controls.Add(this.tbExtraWeatherInfo);
             this.Controls.Add(this.lblTemp);
             this.Controls.Add(this.pbWeatherIcone);
@@ -110,6 +131,8 @@
         private System.Windows.Forms.PictureBox pbWeatherIcone;
         private System.Windows.Forms.Label lblTemp;
         private System.Windows.Forms.TextBox tbExtraWeatherInfo;
+        private System.Windows.Forms.TextBox tbUserInputCity;
+        private System.Windows.Forms.Label lblChooseCity;
     }
 }
 

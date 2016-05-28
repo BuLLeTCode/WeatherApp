@@ -13,7 +13,6 @@ namespace WeatherNetPersonal
             InitializeComponent();
             InitializeWeatherApi();
             InitializeBackground();
-            InitializeWeatherInfo();
         }
 
         private void InitializeBackground()
@@ -22,6 +21,11 @@ namespace WeatherNetPersonal
             BackColor = Color.Transparent;
 
             Opacity = .95;
+            
+            //By default no city
+            lblTemp.Visible = false;
+            lblCityNameCountry.Text = @"Izvēlies pilsētu";
+            tbExtraWeatherInfo.Visible = false;
         }
 
         private static void InitializeWeatherApi()
@@ -29,23 +33,47 @@ namespace WeatherNetPersonal
             ClientSettings.SetApiKey("1b42f01b0706e3756da5e4a5d63fde98");
         }
 
-        private void InitializeWeatherInfo()
+        private void InitializeWeatherInfo(string userInputCity)
         {
-            CurrentCityWeather valmieraCityWeather = new CurrentCityWeather("Valmiera");//TODO this needs to changed to some Dropdown.
+            CurrentCityWeather cityWeather = new CurrentCityWeather(userInputCity);
+            //Little manipulation according to City validation!
+            if (!cityWeather.IsCityValide())
+            {
+                pbWeatherIcone.Image = pbWeatherIcone.ErrorImage;
+                lblTemp.Visible = false;
+                lblCityNameCountry.Text = @"Pilsēta nav atrasta";
+                tbExtraWeatherInfo.Visible = false;
+            }
+            else
+            {
+                if (!lblTemp.Visible)
+                {
+                    lblTemp.Visible = true;
+                    tbExtraWeatherInfo.Visible = true;
+                }
+            }
 
-            pbWeatherIcone.Image = Image.FromFile(@"Pictures\" + valmieraCityWeather.GetWeatherIcone() + ".png");
-            lblTemp.Text = valmieraCityWeather.GetTemp() + @"°C";
-            lblCityNameCountry.Text = valmieraCityWeather.City + @", LV";
+            pbWeatherIcone.Image = Image.FromFile(@"Pictures\" + cityWeather.GetWeatherIcone() + ".png");
+            lblTemp.Text = cityWeather.GetTemp() + @"°C";
+            lblCityNameCountry.Text = cityWeather.City + @", LV";
             //Add extra weather info
             tbExtraWeatherInfo.ReadOnly = true;
             tbExtraWeatherInfo.Text = Resources.MainForm_InitializeWeatherInfo_Vēja_ātrums_;
-            tbExtraWeatherInfo.Text += valmieraCityWeather.GetWind() + Resources.MainForm_InitializeWeatherInfo__m_s;
+            tbExtraWeatherInfo.Text += cityWeather.GetWind() + Resources.MainForm_InitializeWeatherInfo__m_s;
             tbExtraWeatherInfo.Text += Environment.NewLine + Resources.MainForm_InitializeWeatherInfo_Gaisa_mitrums_ +
-                                       valmieraCityWeather.GetHumidity();
+                                       cityWeather.GetHumidity();
             //TODO get information about sunrise and sunset.
-            //tbExtraWeatherInfo.Text += Environment.NewLine + valmieraCityWeather.GetHumidity();
+            //tbExtraWeatherInfo.Text += Environment.NewLine + cityWeather.GetHumidity();
 
 
+        }
+
+        private void tbUserInputCity_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Return)
+            {
+                InitializeWeatherInfo(tbUserInputCity.Text);
+            }
         }
     }
 }
